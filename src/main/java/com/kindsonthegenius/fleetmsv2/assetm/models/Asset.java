@@ -1,0 +1,45 @@
+package com.kindsonthegenius.fleetmsv2.assetm.models;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.kindsonthegenius.fleetmsv2.hr.models.Employee;
+import com.kindsonthegenius.fleetmsv2.hr.models.EmployeeType;
+import com.kindsonthegenius.fleetmsv2.hr.models.Person;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Asset {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int asset_id;
+
+ private String asset_name;
+ private String asset_description;
+ @DateTimeFormat(pattern = "yyyy-MM-dd")
+ private Date created_at;
+ @DateTimeFormat(pattern = "yyyy-MM-dd")
+ private Date updated_at;
+
+ @ManyToOne
+ @JoinColumn(name = "asset_category_id", updatable = false, insertable = false)
+ private AssetCategory assetCategory;
+ private Integer asset_category_id;
+
+//machine_asset_id
+//
+//
+//    equipmentAsset_equioment_asset_id
+//    furnitureAsset_furniture_asset_id
+
+
+}

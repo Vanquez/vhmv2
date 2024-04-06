@@ -21,6 +21,11 @@ public class ApplicationController {
         return "/fleet/index";
     }
 
+    @GetMapping("asset")
+    public String asset(){
+        return "/assetm/index";
+    }
+
     @GetMapping("accounts")
     public String accounts(){
         return "/accounts/index";
