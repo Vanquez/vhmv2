@@ -16,12 +16,20 @@ public class DepartmentController {
     @Autowired
     private EmployeeService employeeService;
 
+
+
     //Get All VehicleTypes
     @GetMapping("/parameters/departments")
     public String findAll(Model model){
         model.addAttribute("departments", departmentService.findAll());
         model.addAttribute("employees", employeeService.findAll());
         return "/parameters/departments";
+    }
+
+    @RequestMapping("/parameters/departmentAdd")
+    public String departmentAdd(){
+
+        return "/parameters/departmentAdd";
     }
 
     @RequestMapping("/parameters/departments/findById")
@@ -48,5 +56,13 @@ public class DepartmentController {
     public String delete(Integer id) {
         departmentService.delete(id);
         return "redirect:/parameters/departments";
+    }
+
+    @RequestMapping("/parameters/department/{op}/{id}")
+    public String editDepartment(@PathVariable Integer id, @PathVariable String op, Model model){
+        Department department = departmentService.findById(id);
+        model.addAttribute("department", department);
+
+        return "/parameters/department" + op;
     }
 }

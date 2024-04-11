@@ -1,12 +1,11 @@
 package com.kindsonthegenius.fleetmsv2.assetm.controllers;
 
 import com.kindsonthegenius.fleetmsv2.assetm.models.Asset;
-import com.kindsonthegenius.fleetmsv2.assetm.models.AssetCategory;
 import com.kindsonthegenius.fleetmsv2.assetm.services.AssetCategoryService;
 import com.kindsonthegenius.fleetmsv2.assetm.services.AssetService;
-import com.kindsonthegenius.fleetmsv2.fleet.models.Vehicle;
 import com.kindsonthegenius.fleetmsv2.hr.models.Employee;
 import com.kindsonthegenius.fleetmsv2.hr.services.EmployeeService;
+import com.kindsonthegenius.fleetmsv2.mail.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +21,12 @@ public class AssetController {
 
      @Autowired
      private EmployeeService employeeService;
+
+     @Autowired
+     private EmailService emailService;
+
+
+
 
      public Model addModelAttributes(Model model){
          model.addAttribute("assetCategoryList", assetCategoryService.findAll());
@@ -86,10 +91,39 @@ public class AssetController {
          Employee employees = employeeService.findById(id);
          model.addAttribute("employee", employees);
          model.addAttribute("assigned", assetService.getAssets(employees));
-         model.addAttribute("assigned", assetService.getNotAssets(employees));
+         model.addAttribute("unassigned", assetService.getNotAssets(employees));
 
-         return "/hr/employeeAssign";
+         String email = employees.getEmail();
+        emailService.sendEmail(email, "Email Testing from SpringBoot","This is a test email");
+
+         return "/assetm/Assign" + op; // returns assignEdit or assignDetail
     }
+
+    // Controller method to assign
+    @RequestMapping("/assetm/asset/assign/{employeeId}/{assetId}")
+    public String assignAsset(@PathVariable Integer employeeId,
+                             @PathVariable Integer assetId) {
+        assetService.assignAsset(employeeId, assetId);
+        return "redirect:/assetm/assign/Edit/" + employeeId;
+    }
+
+    // Controller method to unassign
+    @RequestMapping("/assetm/asset/unassign/{employeeId}/{assetId}")
+    public String unassignAsset(@PathVariable Integer employeeId,
+                               @PathVariable Integer assetId) {
+        assetService.unassignAsset(employeeId, assetId);
+        return "redirect:/assetm/assign/Edit/" + employeeId;
+    }
+
+    @GetMapping("/assetm/depreciatedassets")
+    public String depreciatedAssets(){
+
+        assetService.migrateAssets();
+
+         return "/assetm/depreciatedassets";
+    }
+
+
 
 
 }

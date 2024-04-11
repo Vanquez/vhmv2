@@ -38,8 +38,8 @@ public class Employee extends Person {
 
 	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER )
 	@JoinTable(
-			name = "emloyee_asset",
-			joinColumns = {@JoinColumn(name = "id")},
+			name = "employee_asset_final",
+			joinColumns = {@JoinColumn(name = "employee_id")},
 			inverseJoinColumns = {@JoinColumn(name = "asset_id")}
 	)
    Set<Asset> assets = new HashSet<>();

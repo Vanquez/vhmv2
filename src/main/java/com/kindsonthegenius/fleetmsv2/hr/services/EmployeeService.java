@@ -43,5 +43,6 @@ public class EmployeeService {
 		return employeeRepository.findByKeyword(keyword);
 	}
 
-
+   // Get total number of employees
+	public List<Integer> getNumberEmployee(){return  employeeRepository.getNumberEmployee();}
 }
