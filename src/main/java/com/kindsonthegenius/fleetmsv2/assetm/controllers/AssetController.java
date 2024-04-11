@@ -86,9 +86,25 @@ public class AssetController {
          Employee employees = employeeService.findById(id);
          model.addAttribute("employee", employees);
          model.addAttribute("assigned", assetService.getAssets(employees));
-         model.addAttribute("assigned", assetService.getNotAssets(employees));
+         model.addAttribute("unassigned", assetService.getNotAssets(employees));
 
-         return "/hr/employeeAssign";
+         return "/assetm/Assign" + op; // returns assignEdit or assignDetail
+    }
+
+    // Controller method to assign
+    @RequestMapping("/assetm/asset/assign/{employeeId}/{assetId}")
+    public String assignAsset(@PathVariable Integer employeeId,
+                             @PathVariable Integer assetId) {
+        assetService.assignAsset(employeeId, assetId);
+        return "redirect:/assetm/assign/Edit/" + employeeId;
+    }
+
+    // Controller method to unassign
+    @RequestMapping("/assetm/asset/unassign/{employeeId}/{assetId}")
+    public String unassignAsset(@PathVariable Integer employeeId,
+                               @PathVariable Integer assetId) {
+        assetService.unassignAsset(employeeId, assetId);
+        return "redirect:/assetm/assign/Edit/" + employeeId;
     }
 
 

@@ -38,7 +38,7 @@ public class Employee extends Person {
 
 	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER )
 	@JoinTable(
-			name = "emloyee_asset",
+			name = "employee_asset",
 			joinColumns = {@JoinColumn(name = "id")},
 			inverseJoinColumns = {@JoinColumn(name = "asset_id")}
 	)
