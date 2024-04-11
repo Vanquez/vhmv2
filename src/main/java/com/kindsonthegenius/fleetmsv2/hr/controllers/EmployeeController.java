@@ -98,4 +98,14 @@ public class EmployeeController {
 		model.addAttribute("employee", employeeService.findByUsername(un));
 		return "profile";
 	}
+
+//	@GetMapping("/hr/assignemployee/{op}/{id}")
+//	public String editAssign(@PathVariable int id, @PathVariable String op, Model model){
+//		Employee employees = employeeService.findById(id);
+//		model.addAttribute("employee", employees);
+//		model.addAttribute("assigned", employeeService.getAssign());
+//		model.addAttribute("assigned", employeeService.getNotAssigned());
+//
+//		return "";
+//	}
 }

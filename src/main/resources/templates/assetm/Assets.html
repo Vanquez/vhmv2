@@ -57,6 +57,8 @@
 <!--                            <th><i class="icon_profile"></i> Id</th>-->
 <!--                            <th><i class="icon_profile"></i> Asset Category</th>-->
                             <th><i class="icon_profile"></i> Name</th>
+                            <th><i class="icon_profile"></i> Model</th>
+                            <th><i class="icon_profile"></i> Serial Number</th>
                             <th><i class="icon_calendar"></i>Description</th>
 <!--                            <th><i class="icon_mail_alt"></i> Acquisition Date</th>-->
                             <th><i class="icon_cogs"></i> Action</th>
@@ -70,6 +72,8 @@
 <!--&lt;!&ndash;                            <td >Id</td>&ndash;&gt;-->
 <!--                            <td th:each="assetCategory : ${assetCategoryList}" th:text="${assetCategory.asset_category_name}">Property 2 Value</td>-->
                             <td th:text="${asset.asset_name}">Name</td>
+                            <td th:text="${asset.asset_model}">Model</td>
+                            <td th:text="${asset.asset_serial_number}">Serial Number</td>
                             <td th:text="${asset.asset_description}">Description</td>
 <!--                            <td th:text="${vehicle.acquisitionDate}">Acquisition Date</td>-->
                             <td>

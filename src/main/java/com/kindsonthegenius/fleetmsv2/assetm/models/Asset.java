@@ -29,11 +29,11 @@ public class Asset {
  private Date created_at;
  @DateTimeFormat(pattern = "yyyy-MM-dd")
  private Date updated_at;
+ private String asset_model;
+ private String asset_serial_number;
 
- @ManyToOne
- @JoinColumn(name = "asset_category_id", updatable = false, insertable = false)
- private AssetCategory assetCategory;
- private Integer asset_category_id;
+
+
 
 //machine_asset_id
 //

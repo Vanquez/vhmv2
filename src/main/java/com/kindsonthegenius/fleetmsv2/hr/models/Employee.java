@@ -2,14 +2,16 @@ package com.kindsonthegenius.fleetmsv2.hr.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.kindsonthegenius.fleetmsv2.assetm.models.Asset;
+import com.kindsonthegenius.fleetmsv2.security.models.Role;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -31,4 +33,15 @@ public class Employee extends Person {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date hireDate;
+
+	;
+
+	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER )
+	@JoinTable(
+			name = "emloyee_asset",
+			joinColumns = {@JoinColumn(name = "id")},
+			inverseJoinColumns = {@JoinColumn(name = "asset_id")}
+	)
+   Set<Asset> assets = new HashSet<>();
+
 }

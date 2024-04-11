@@ -16,4 +16,5 @@ public interface RoleRepository extends JpaRepository<Role, Integer> {
             nativeQuery = true
     )
     List<Role> getUserNotRoles(Integer userId);
+
 }

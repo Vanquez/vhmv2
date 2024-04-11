@@ -45,6 +45,23 @@
                                                placeholder="Asset name">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="txtVehicleNumberAdd" class="col-sm-4 col-form-label">Asset
+                                        Model: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="txtVehicleNumberAdd"
+                                               name="asset_model" placeholder="Asset model">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtRegistrationDateAdd" class="col-sm-4 col-form-label">Asset
+                                        Serial Number: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="txtRegistrationDateAdd"
+                                               name="asset_serial_number" placeholder="Asset Serial Number">
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="txtDescriptionAdd" class="col-sm-4 col-form-label">Asset Description: </label>
@@ -144,7 +161,7 @@
                         <button type="submit" class="btn btn-primary">
                             Save
                         </button>
-                        <a href="/countries" class="btn  btn-warning">
+                        <a href="/asset" class="btn  btn-warning">
                             Exit
                         </a>
                     </div>
@@ -153,5 +170,19 @@
         </div>
     </section>
 </div>
+
+<script th:inline="javascript">
+    // JavaScript to show/hide fields based on selected option
+    document.getElementById("options").addEventListener("change", function() {
+        var selectedOption = this.value;
+        if (selectedOption === "option1") {
+            document.getElementById("option1Fields").style.display = "block";
+            document.getElementById("option2Fields").style.display = "none";
+        } else if (selectedOption === "option2") {
+            document.getElementById("option1Fields").style.display = "none";
+            document.getElementById("option2Fields").style.display = "block";
+        }
+    });
+</script>
 </body>
 </html>

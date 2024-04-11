@@ -49,6 +49,23 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <label for="txtVehicleNameAdd" class="col-sm-4 col-form-label">Asset
+                                        Model: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="id" th:field="${asset.asset_model}" name="asset_model"
+                                               placeholder="Asset name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Asset Serial Number:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" th:field="${asset.asset_serial_number}"
+                                               name="timeOut" placeholder="Time Out">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="txtDescriptionAdd" class="col-sm-4 col-form-label">Asset Description: </label>
                                     <div class="col-sm-6">
                                         <textarea type="text" class="form-control" id="txtDescriptionAdd" th:field="${asset.asset_description}"
