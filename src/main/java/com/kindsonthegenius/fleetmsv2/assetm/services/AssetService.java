@@ -34,9 +34,10 @@ public class AssetService {
     }
 
     //Save Asset
-    public void save(Asset asset) {
+    public Asset save(Asset asset) {
 
         assetRepository.save(asset);
+        return asset;
     }
 
     //Get Vehicle By Id

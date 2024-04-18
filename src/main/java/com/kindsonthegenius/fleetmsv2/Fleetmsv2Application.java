@@ -21,6 +21,9 @@ public class Fleetmsv2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Fleetmsv2Application.class, args);
+		System.setProperty("javax.net.ssl.trustStore", "/path/to/truststore.jks");
+		System.setProperty("javax.net.ssl.trustStorePassword", "password");
+
 	}
 
 //	@EventListener(ApplicationEvent.class)

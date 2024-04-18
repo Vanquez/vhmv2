@@ -28,6 +28,13 @@
                         <div class="col-lg-6">
                             <section class="panel">
                                 <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Id: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" th:value="${asset.asset_id}" name="asset_id"
+                                               readonly placeholder="Id">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Asset Category: </label>
                                     <div class="col-sm-6">
                                         <select class="form-control" name="asset_category_id">

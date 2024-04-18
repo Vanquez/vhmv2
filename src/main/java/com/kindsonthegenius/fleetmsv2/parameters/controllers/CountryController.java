@@ -17,18 +17,18 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
-//    @GetMapping("/parameters/countries")
-//    public String  getAll(Model model, String keyword){
-//        List<Country> countries;
-//        countries = keyword == null? countryService.findAll():countryService.findByKeyword(keyword);
-//        model.addAttribute("countries", countries);
-//        return "/parameters/countries";
-//    }
-
     @GetMapping("/parameters/countries")
-    public String getAllPages(Model model){
-        return getOnePage(model, 1);
+    public String  getAll(Model model, String keyword){
+        List<Country> countries;
+        countries = keyword == null? countryService.findAll():countryService.findByKeyword(keyword);
+        model.addAttribute("countries", countries);
+        return "/parameters/countries";
     }
+
+//    @GetMapping("/parameters/countries")
+//    public String getAllPages(Model model){
+//        return getOnePage(model, 1);
+//    }
 
     @GetMapping("/parameters/countries/page/{pageNumber}")
     public String  getOnePage(Model model, @PathVariable("pageNumber") int currentPage){
