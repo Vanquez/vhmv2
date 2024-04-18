@@ -28,10 +28,13 @@ public class AssetController {
 
 
 
+
+
      public Model addModelAttributes(Model model){
          model.addAttribute("assetCategoryList", assetCategoryService.findAll());
          model.addAttribute("assetList", assetService.findAll());
          model.addAttribute("assignEmployee", employeeService.findAll());
+         model.addAttribute("depreciateAssets", assetService.findDepreciatedAssest());
 
         return model;
      }
@@ -116,9 +119,10 @@ public class AssetController {
     }
 
     @GetMapping("/assetm/depreciatedassets")
-    public String depreciatedAssets(){
+    public String depreciatedAssets(Model model){
 
         assetService.migrateAssets();
+        addModelAttributes(model);
 
          return "/assetm/depreciatedassets";
     }

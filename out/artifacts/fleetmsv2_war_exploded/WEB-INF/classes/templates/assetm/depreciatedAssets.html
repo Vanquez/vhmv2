@@ -8,11 +8,11 @@
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa fa-bars"></i> Assets</h3>
+                <h3 class="page-header"><i class="fa fa fa-bars"></i>Depreciated Computers</h3>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="/index">Home</a></li>
-                    <li><i class="fa fa-bars"></i><a href="/asset">Asset Home</a></li>
-                    <li><i class="fa fa-square-o"></i>Depreciated Asset List</li>
+                    <li><i class="fa fa-bars"></i><a href="/asset">Computer Home</a></li>
+                    <li><i class="fa fa-square-o"></i>Depreciated Computer List</li>
                 </ol>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 <section class="panel" style="margin-bottom: 0px;">
                     <div class="panel-body">
                         <a  class="btn btn-primary">
-                            Add New Asset
+                            Automated
                         </a>
                     </div>
                 </section>
@@ -63,7 +63,7 @@
                             <!--                            <th><i class="icon_mail_alt"></i> Acquisition Date</th>-->
                             <th><i class="icon_cogs"></i> Action</th>
                         </tr>
-                        <tr th:each="asset:${assetList}"   >
+                        <tr th:each="asset:${depreciateAssets}"   >
                             <!--                            <td>-->
                             <!--                                <a id="photoButton" th:href="@{'/img/vehicles/' + ${vehicle.id} + '.jpg'}">-->
                             <!--                                    <img th:src="@{'/img/vehicles/' + ${vehicle.id} +'.jpg'}" width="40" height="40">-->

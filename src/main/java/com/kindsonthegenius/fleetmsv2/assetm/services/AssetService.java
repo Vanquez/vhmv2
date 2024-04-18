@@ -163,6 +163,9 @@ public class AssetService {
             DepreciatedAsset depreciatedAsset = new DepreciatedAsset();
             depreciatedAsset.setAsset_name(asset.getAsset_name());
             depreciatedAsset.setCreated_at(asset.getCreated_at());
+            depreciatedAsset.setAsset_description(asset.getAsset_description());
+            depreciatedAsset.setAsset_model(asset.getAsset_model());
+            depreciatedAsset.setAsset_serial_number(asset.getAsset_serial_number());
             // Copy other fields as needed
             depreciatedAssetRepository.save(depreciatedAsset);
         }
@@ -170,5 +173,11 @@ public class AssetService {
 
         System.out.println("Worked");
 
+    }
+
+    public List<DepreciatedAsset> findDepreciatedAssest() {
+
+        List<DepreciatedAsset>  depreciatedAssets = depreciatedAssetRepository.findAll();
+        return depreciatedAssets;
     }
 }
