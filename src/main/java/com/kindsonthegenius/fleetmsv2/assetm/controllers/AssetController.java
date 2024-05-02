@@ -91,10 +91,13 @@ public class AssetController {
 
     @GetMapping("/assetm/assign/{op}/{id}")
     public String editAssign(@PathVariable int id, @PathVariable String op, Model model){
-        Employee employees = employeeService.findById(id);
+         Employee employees = employeeService.findById(id);
          model.addAttribute("employee", employees);
          model.addAttribute("assigned", assetService.getAssets(employees));
          model.addAttribute("unassigned", assetService.getNotAssets(employees));
+
+         String email = employees.getEmail();
+        emailService.sendEmail(email, "Email Testing from SpringBoot","This is a test email");
 
          return "/assetm/Assign" + op; // returns assignEdit or assignDetail
     }
@@ -104,9 +107,6 @@ public class AssetController {
     public String assignAsset(@PathVariable Integer employeeId,
                              @PathVariable Integer assetId) {
         assetService.assignAsset(employeeId, assetId);
-        Employee employees = employeeService.findById(employeeId);
-        String email = employees.getEmail();
-        emailService.sendEmail(email, "Email Testing from SpringBoot","This is a test email");
         return "redirect:/assetm/assign/Edit/" + employeeId;
     }
 
@@ -126,6 +126,7 @@ public class AssetController {
 
          return "/assetm/depreciatedassets";
     }
+
 
 
 
